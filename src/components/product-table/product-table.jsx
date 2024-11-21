@@ -1,6 +1,7 @@
 import ProductRow from "../product-row/product-row";
+import PropTypes from 'prop-types'
 
-function ProductTable() {
+function ProductTable({products}) {
     return (
         <table className="table table-striped">
             <thead className="table-light">
@@ -10,21 +11,17 @@ function ProductTable() {
                 </tr>
             </thead>
             <tbody id="tableBody">
-                <tr>
-                    <ProductRow />
-                </tr>
-                <tr>
-                    <ProductRow />
-                </tr>
-                <tr>
-                    <ProductRow />
-                </tr>
-                <tr>
-                    <ProductRow />
-                </tr>
+                    <ProductRow products = {products}/>
+                    <ProductRow products = {products}/>
+                    <ProductRow products = {products}/>
+                    <ProductRow products = {products}/>
             </tbody>
         </table>
     );
 }
+
+ProductTable.propTypes = {
+    products: PropTypes.array.isRequired
+};
 
 export default ProductTable;

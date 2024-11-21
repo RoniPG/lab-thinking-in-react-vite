@@ -12,7 +12,7 @@ function ProductsPage() {
             <h1>IronStore</h1>
         </div>
         <SearchBar className="mb-2"/>
-        <ProductTable />
+        <ProductTable products={products} />
         </>
     );
 }
