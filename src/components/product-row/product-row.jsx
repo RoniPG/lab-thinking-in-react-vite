@@ -1,10 +1,12 @@
-import PropTypes from 'prop-types'
 
-function ProductRow({ products }) {
+function ProductRow({ products, search }) {
 
+    const filterProducts = products.filter((p) => (
+        p.name.toLowerCase().includes(search.toLowerCase())
+    ));
     return (
         <>
-            {products.map((product, index) => (
+            {filterProducts.map((product, index) => (
                 <tr key={index}>
                     {product.inStock ? <td>{product.name}</td> : <td className='text-danger'>{product.name}</td>}
                     <td>{product.price}</td>
@@ -14,7 +16,4 @@ function ProductRow({ products }) {
     );
 }
 
-ProductRow.propTypes = {
-    products: PropTypes.array.isRequired
-};
 export default ProductRow;

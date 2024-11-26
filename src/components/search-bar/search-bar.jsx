@@ -1,12 +1,27 @@
-import PropTypes from 'prop-types'
+import { useEffect } from "react";
 
-function SearchBar({className=""}) {
+function SearchBar({className="", search, onSearch }) {
+
+    useEffect(() =>{
+
+        document.getElementById("search").focus();
+
+    },[])
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        
+    }
     return (
         <div className={`${className} container mt-5`}>
-            <form className="d-flex" role="search">
+            <form onSubmit={(event) => handleSubmit(event) } className="d-flex" role="search">
                 <input
+                    value={search}
+                    onChange={(event => {
+                        onSearch(event.target.value);
+                    })}
+                    id="search"
                     className="form-control me-2"
-                    type="search"
+                    type="text"
                     placeholder="Search"
                     aria-label="Search"
                 />
@@ -15,9 +30,5 @@ function SearchBar({className=""}) {
         </div>
     );
 }
-
-SearchBar.propTypes = {
-    className: PropTypes.string, // `name` debe ser una cadena y es obligatorio
-};
 
 export default SearchBar;
